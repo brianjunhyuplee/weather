@@ -44,35 +44,17 @@ In order to use the API, a queryURL must be generated using an inputted query an
 ```bash
     q = $("#userInputLine").val();
     var queryURL = "api.openweathermap.org/data/2.5/forecast?q=" + q + "&" + apikey;
+
+$.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+    );
 ```
-
-
-**3.  Local Storage**
-
-Two main methods were implemented for the local storage.
-1. setItem
-     ```bash
-    $("#btnId").on("click", function() {
-    var str = JSON.stringify($("#textAreaId").val());
-    localStorage.setItem('keyId',str);
-  });
-    ```
-    - Every time the save button is clicked, the string inputted in the text area is saved.
-    - JSON.stringify($("#textAreaId.val()")); turns the inputted value into a string.
-    - that string is then put into the local storage under the keyId name.
-2. getItem
-    ```bash
-    if(localStorage.getItem('keyId')!==null){
-    $("#textAreaId").text(JSON.parse(localStorage.getItem('keyId')));
-    }
-    ```
-    - Every time the page is refreshed, the string in the local storage under the keyId name will be outputted to the corresponding text area.
-    - JSON.parse outputs the actual value into the text area.
-        - If parse is not used, the output will have double quotations around the string.
+Using the parsed data, the desired data can be obtained. Response.content.content... will "GET" the value.
 
 ## Built With:
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [JS]([https://developer.mozilla.org/en-US/docs/Web/JavaScript])
 * [jQuery](https://developer.mozilla.org/en-US/docs/Glossary/jQuery)
 * [BootStrap](https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Bootstrapped_extensions)
