@@ -16,8 +16,19 @@ $("#goBtn").on("click", function (event) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        var temp = response.list.main.temp;
-        console.log(temp);
+        var currStats = $("<div>");
+        var temp = response.list[0].main.temp;
+        var currTemp = $("<div>");
+        currTemp.text("Temperature: " + temp);
+        var currHum = $("<div>");
+        var hum = response.list[0].main.humidity;
+        currHum.text("Temperature: " + hum);
+        var currWind = $("<div>");
+        var wind = response.list[0].wind.speed;
+        currWind.text("Temperature: " + wind);
+        currStats.append(currTemp);
+        currStats.append(currHum);
+        currStats.append(currWind);
 
     });
 
