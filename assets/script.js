@@ -9,7 +9,9 @@ $("#goBtn").on("click", function (event) {
     q = cityName.val();
     var queryURL = "api.openweathermap.org/data/2.5/forecast?q=" + q + "&appid=1f8d3642112c88ffeef49b457df55b08";
     cityDisplay.text(cityName.val());
-    var historyDiv = $("<div>").text(cityName.val());
+
+    // adds search history (does not work)
+    //var historyDiv = $("<div>").text(cityName.val());
     //history.text(historyDiv);
 
     $.ajax({
@@ -17,6 +19,13 @@ $("#goBtn").on("click", function (event) {
         method: "GET"
     }).then(function (response) {
         //current date
+        $("#cityDisplay").empty();
+        $("#tomorrow").empty();
+        $("#day2").empty();
+        $("#day3").empty();
+        $("#day4").empty();
+        $("#day5").empty();
+
         cityDisplay.append(response.list[0].dt_txt);
         var currStats = $("<div>");
         var temp = parseInt(response.list[0].main.temp)*(9/5)+32;
@@ -31,10 +40,11 @@ $("#goBtn").on("click", function (event) {
         currStats.append(currTemp);
         currStats.append(currHum);
         currStats.append(currWind);
+        cityDisplay.append(currStats);
 
         //future dates
         // 3 hour increment, 8 increments is next day
-        cityDisplay.append(response.list[8].dt_txt);
+        $("#tomorrow").append(response.list[8].dt_txt);
         var tmwStats = $("<div>");
         var tmwtemp = parseInt(response.list[8].main.temp)*(9/5)+32;
         var tmwTempdiv = $("<div>");
@@ -44,8 +54,9 @@ $("#goBtn").on("click", function (event) {
         tmwHum.text("Humidity: " + tmwhum + "%");
         tmwStats.append(tmwTempdiv);
         tmwStats.append(tmwHumdiv);
+        $("#tomorrow").append(tmwStats);
 
-        cityDisplay.append(response.list[16].dt_txt);
+        $("#day2").append(response.list[16].dt_txt);
         var tmwStats1 = $("<div>");
         var tmwtemp1 = parseInt(response.list[16].main.temp)*(9/5)+32;
         var tmwTempdiv1 = $("<div>");
@@ -55,8 +66,9 @@ $("#goBtn").on("click", function (event) {
         tmwHum1.text("Humidity: " + tmwhum1 + "%");
         tmwStats1.append(tmwTempdiv1);
         tmwStats1.append(tmwHumdiv1);
+        $("#day2").append(tmwStats1);
 
-        cityDisplay.append(response.list[24].dt_txt);
+        $("#day3").append(response.list[24].dt_txt);
         var tmwStats2 = $("<div>");
         var tmwtemp2 = parseInt(response.list[24].main.temp)*(9/5)+32;
         var tmwTempdiv2 = $("<div>");
@@ -66,8 +78,9 @@ $("#goBtn").on("click", function (event) {
         tmwHum2.text("Humidity: " + tmwhum2 + "%");
         tmwStats2.append(tmwTempdiv2);
         tmwStats2.append(tmwHumdiv2);
+        $("#day3").append(tmwStats2);
 
-        cityDisplay.append(response.list[32].dt_txt);
+        $("#day4").append(response.list[32].dt_txt);
         var tmwStats3 = $("<div>");
         var tmwtemp3 = parseInt(response.list[32].main.temp)*(9/5)+32;
         var tmwTempdiv3 = $("<div>");
@@ -77,8 +90,9 @@ $("#goBtn").on("click", function (event) {
         tmwHum3.text("Humidity: " + tmwhum3 + "%");
         tmwStats3.append(tmwTempdiv3);
         tmwStats3.append(tmwHumdiv3);
+        $("#day4").append(tmwStats3);
 
-        cityDisplay.append(response.list[40].dt_txt);
+        $("#day5").append(response.list[40].dt_txt);
         var tmwStats4 = $("<div>");
         var tmwtemp4 = parseInt(response.list[40].main.temp)*(9/5)+32;
         var tmwTempdiv4 = $("<div>");
@@ -88,6 +102,9 @@ $("#goBtn").on("click", function (event) {
         tmwHum4.text("Humidity: " + tmwhum4 + "%");
         tmwStats4.append(tmwTempdiv3);
         tmwStats4.append(tmwHumdiv3);
+        $("#day5").append(tmwStats4);
+
+
     });
 
 });
