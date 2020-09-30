@@ -1,45 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-  
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+
 </head>
+
 <body>
     <!-- Header -->
     <header class="container">
         <!-- Jumbotron for Title -->
         <div class="jumbotron" style="background-color: darkslateblue ; color: white;">
-          <h1 class="text-center">
-            <strong></strong>Weather Dashboard</strong>
-          </h1>
-        </header>
+            <h1 class="text-center">
+                <strong></strong>Weather Dashboard</strong>
+            </h1>
+    </header>
 
     <!-- contents -->
     <!-- section for search-->
-    <div class = "row">
-        <div class = "col-sm-4">
+    <div class="row">
+        <div class="col-sm-4">
             <div class="card">
                 <div class="card-header">
                     <strong>Search for a City:</strong>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="cityName">
+                        </div>
+                        <div class="col-sm-3">
+                            <button id="goBtn">Go</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <strong>Previous Searches</strong>
+                        </div>
+                        <div id="searchHistory"></div>
+                    </div>
                 </div>
             </div>
         </div>
         <!-- section for city searched and stats -->
-        <div class = "col-sm-8">
-            <div class = "row">
-                <div class = "col-sm-12">
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-12">
                     <div class="card">
                         <!-- put city name here and append stats -->
-                        <div class="card-header" id = "cityDisplay"></div>
+                        <strong><div class="card-header" id="cityDisplay"></div></strong>
                     </div>
                 </div>
             </div>
             <!-- section for 5 day forcast -->
-            <div class = "row">
-                <div class = "col-sm-12">
+            <div class="row">
+                <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <strong>5 Day Forcast:</strong>
@@ -49,5 +66,8 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/script.js"></script>
 </body>
+
 </html>
